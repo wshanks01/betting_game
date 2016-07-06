@@ -1,15 +1,17 @@
 $(document).ready(function(){
-  
+  //Ensures bankroll stays up to date on the views//
   bankroll = parseInt($("div.bank").html())
   
   $('.bank').html(bankroll)
   $('.game').click(function(e){
     e.preventDefault();
 
+// Gathers user input into usable vars//
     var userBet = parseInt($("input[name='bet']").val());
     var userChoice = parseInt($("input[name='choice']").val());
     var compChoice = Math.floor(Math.random() * 10) + 1
 
+    //Each result is outputted on the views and replaced each time a new result is produced.//
     const results = document.querySelector('.results')
     if (userBet > bankroll) {
       results.innerHTML = "You can't bet more than you have!"
@@ -29,7 +31,7 @@ $(document).ready(function(){
           }; 
       };
     };
-
+    // If the user is out of money then hide the form and only allow them to restart the game//
     document.querySelector('.bank').innerHTML = bankroll;
     hideform(bankroll);
   });
